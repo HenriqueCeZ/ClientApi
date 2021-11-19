@@ -1,6 +1,6 @@
 package com.example.springboot.config;
 
-import java.util.Locale;
+
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -12,12 +12,16 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 public class interConfig {
 
     @Bean
-    public MessageSource messageSource(){
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("messages");
-        messageSource.setDefaultEncoding("ISO-8859-1");
-        messageSource.setDefaultLocale(Locale.getDefault());
-        return messageSource;
+    public MessageSource messageSource() {
+    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+    messageSource.setBasenames( "classpath:messages" );
+    // if true, the key of the message will be displayed if the key is not
+    // found, instead of throwing a NoSuchMessageException
+    messageSource.setUseCodeAsDefaultMessage( true );
+    messageSource.setDefaultEncoding( "UTF-8" );
+    // # -1 : never reload, 0 always reload
+    messageSource.setCacheSeconds( 0 );
+    return messageSource;
     }
     
     public LocalValidatorFactoryBean validatorFactoryBean(){

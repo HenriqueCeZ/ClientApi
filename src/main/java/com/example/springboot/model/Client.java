@@ -33,12 +33,12 @@ public class Client {
 
     @Column(nullable = false, length = 150)
 
-    @NotEmpty(message = "{campo.name.obrigatorio}")
+    @NotEmpty(message = "Nome obrigatório")
     private String name;
 
     @Column(nullable = false, length = 11)
-    @NotNull(message = "{campo.cpf.obrigatorio}")
-    @CPF(message = "{campo.cpf.invalido}")
+    @NotNull(message = "CPF obrigatório")
+    @CPF(message = "CPF inválido")
     private String cpf;
 
     @Column(name = "data_register", updatable = false)
