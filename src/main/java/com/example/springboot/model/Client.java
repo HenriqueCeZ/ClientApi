@@ -24,12 +24,9 @@ public class Client {
     @Column(nullable = false, length = 11)
     private String cpf;
 
-    @Column
+    @Column(name = "data_register")
     private LocalDate registerDate;
 
 
-    public static void main(String[] args) {
-        Client c = new Client();
-        
-    }
+   
 }
