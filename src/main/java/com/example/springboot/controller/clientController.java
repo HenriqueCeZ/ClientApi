@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -47,6 +48,17 @@ public class clientController {
              return Void.TYPE;
          }).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
    
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void update(@PathVariable Integer id, @RequestBody Client clientUpdate){
+        repository.findById(id).map(client ->{
+            clientUpdate.setId(client.getId()); //as atualizações vão ser setadas para o clientid
+            clientUpdate.setRegisterDate(client.getRegisterDate());
+           return repository.save(clientUpdate); 
+
+        }).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }
