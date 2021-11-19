@@ -38,7 +38,7 @@ public class clientController {
         return repository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("{id} ")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id){
         // repository.deleteById(id); um delete sem verificação
