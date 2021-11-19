@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,6 +34,7 @@ public class Client {
     private String cpf;
 
     @Column(name = "data_register")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registerDate;
 
     @PrePersist
