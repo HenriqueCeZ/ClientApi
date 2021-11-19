@@ -2,7 +2,7 @@ package com.example.springboot.controller;
 
 import com.example.springboot.model.Client;
 import com.example.springboot.repository.ClientRepository;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,6 +38,12 @@ public class clientController {
     public Client searchClient(@PathVariable Integer id){
         return repository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+  @GetMapping("/search")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Client> getAllClient() {
+    return repository.findAll();
+  }
+
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -49,6 +55,7 @@ public class clientController {
          }).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
    
     }
+    
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
