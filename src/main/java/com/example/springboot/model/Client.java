@@ -7,12 +7,19 @@ import javax.persistence.Entity; //dizer que é uma entidade jpa
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +34,9 @@ public class Client {
     @Column(name = "data_register")
     private LocalDate registerDate;
 
-
+    @PrePersist
+    public void prePersist() {
+        setRegisterDate(LocalDate.now()); //antes de persistence no database uso seto a data atual
+    }
    
 }
