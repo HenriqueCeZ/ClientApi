@@ -33,7 +33,7 @@ public class Client {
     @Column(nullable = false, length = 11)
     private String cpf;
 
-    @Column(name = "data_register")
+    @Column(name = "data_register", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registerDate;
 
@@ -41,5 +41,7 @@ public class Client {
     public void prePersist() {
         setRegisterDate(LocalDate.now()); //antes de persistence no database uso seto a data atual
     }
+
+    
    
 }

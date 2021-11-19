@@ -55,15 +55,15 @@ public class clientController {
          }).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
    
     }
-    
+
 
     @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Integer id, @RequestBody Client clientUpdate){
         repository.findById(id).map(client ->{
-            clientUpdate.setId(client.getId()); //as atualizações vão ser setadas para o clientid
-            clientUpdate.setRegisterDate(client.getRegisterDate());
-           return repository.save(clientUpdate); 
+            client.setName(clientUpdate.getName());
+            client.setCpf(clientUpdate.getCpf());
+           return repository.save(client); 
 
         }).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
