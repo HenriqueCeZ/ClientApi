@@ -3,6 +3,9 @@ package com.example.springboot.controller;
 import com.example.springboot.model.Client;
 import com.example.springboot.repository.ClientRepository;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +33,7 @@ public class clientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client){
+    public Client save(@RequestBody @Valid Client client){
         return repository.save(client);
     }
 
