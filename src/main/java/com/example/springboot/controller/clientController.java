@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/clients")
 public class ClientController {
     
    
@@ -31,7 +31,7 @@ public class ClientController {
         this.repository = repository;
     }
 
-    @PostMapping
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody @Valid Client client){
         return repository.save(client);
@@ -41,7 +41,7 @@ public class ClientController {
     public Client searchClient(@PathVariable Integer id){
         return repository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-  @GetMapping("/search")
+  @GetMapping("/all")
   @ResponseStatus(HttpStatus.OK)
   public List<Client> getAllClient() {
     return repository.findAll();
@@ -60,7 +60,7 @@ public class ClientController {
     }
 
 
-    @PutMapping("{id}")
+    @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Integer id, @RequestBody @Valid Client clientUpdate){
         repository.findById(id).map(client ->{
