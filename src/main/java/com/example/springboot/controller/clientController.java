@@ -21,13 +21,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/clientes")
-public class clientController {
+public class ClientController {
     
    
     private final ClientRepository repository;
 
     @Autowired
-    public clientController(ClientRepository repository) {
+    public ClientController(ClientRepository repository) {
         this.repository = repository;
     }
 
@@ -62,7 +62,7 @@ public class clientController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Client clientUpdate){
+    public void update(@PathVariable Integer id, @RequestBody @Valid Client clientUpdate){
         repository.findById(id).map(client ->{
             client.setName(clientUpdate.getName());
             client.setCpf(clientUpdate.getCpf());
