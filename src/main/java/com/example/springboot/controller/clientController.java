@@ -43,7 +43,7 @@ public class ClientController {
     public Client searchClient(@PathVariable Integer id){
         return repository.findById(id).orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
-  @GetMapping("/all")
+  @GetMapping
   @ResponseStatus(HttpStatus.OK)
   public List<Client> getAllClient() {
     return repository.findAll();
