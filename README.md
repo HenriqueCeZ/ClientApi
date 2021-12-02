@@ -18,7 +18,7 @@ Install API with mvn
 #### Get all clients
 
 ```http
-  GET /clients/all
+  GET /client
 ```
 
 | Parameter | Type     | Description                |
@@ -39,7 +39,7 @@ Install API with mvn
 #### Post new client
 
 ```http
-  POST /client/new
+  POST /clients
 ```
 
 | Parameter | Type     | Description                       |
@@ -51,7 +51,7 @@ Install API with mvn
 #### Put client
 
 ```http
-  PUT /clients/update/id
+  PUT /clients/id
 ```
 
 | Parameter | Type     | Description                       |
