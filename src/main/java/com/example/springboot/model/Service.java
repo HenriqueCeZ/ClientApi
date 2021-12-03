@@ -1,6 +1,7 @@
 package com.example.springboot.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,5 +33,8 @@ public class Service {
 
     @Column
     private BigDecimal valor;
+
+    @Column
+    private LocalDate data;
     
 }
