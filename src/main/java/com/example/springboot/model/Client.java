@@ -42,7 +42,7 @@ public class Client {
     private String cpf;
 
     @Column(name = "data_register", updatable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate registerDate;
 
     @PrePersist
