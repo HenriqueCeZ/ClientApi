@@ -18,7 +18,7 @@ Install API with mvn
 #### Get all clients
 
 ```http
-  GET /client
+  GET /clients
 ```
 
 | Parameter | Type     | Description                |
@@ -64,6 +64,34 @@ Install API with mvn
 ```http
   DELETE /clients/id
 ```
+
+
+#### Post services
+
+```http
+  POST /services
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `data`       | `LocalDate` | **Required**. > dd-MM-yyyy|
+| `valor`        | `bigdecimal` | **Required**.   -> bigdecimal|
+| `description`       | `string` | **Required**. > 150 characters|
+| `client`        | `Client` | **Required**.   -> is client|
+
+
+#### Get services by client name and month 
+
+```http
+  GET /services
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `mes` | `integer` | **optional**|
+| `nome` | `string` | **optional**|
+
+
 
 
 
