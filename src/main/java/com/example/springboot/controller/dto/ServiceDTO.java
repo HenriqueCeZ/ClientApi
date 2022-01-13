@@ -11,6 +11,4 @@ public class ServiceDTO {
     private String data;
     private Integer idCliente;
    
-   
-    
 }
