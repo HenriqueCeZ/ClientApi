@@ -13,6 +13,7 @@ import com.example.springboot.repository.ServiceRepository;
 import com.example.springboot.util.BigDecimalConvert;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/services")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class ServiceController {
     private final ClientRepository clientRepository;
