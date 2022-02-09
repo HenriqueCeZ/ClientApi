@@ -28,8 +28,8 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/services")
-@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class ServiceController {
     private final ClientRepository clientRepository;
     private final ServiceRepository repository;
