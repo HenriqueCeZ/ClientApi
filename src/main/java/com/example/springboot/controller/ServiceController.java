@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import com.example.springboot.controller.dto.ServiceDTO;
 import com.example.springboot.model.Client;
 import com.example.springboot.model.Service;
@@ -39,7 +41,7 @@ public class ServiceController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) 
-    public Service save(@RequestBody ServiceDTO dto){
+    public Service save(@RequestBody @Valid ServiceDTO dto){
        LocalDate date = LocalDate.parse(dto.getData(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
        Integer idClient = dto.getIdCliente();
        Client client = clientRepository.findById(idClient).orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente inexistente"));
